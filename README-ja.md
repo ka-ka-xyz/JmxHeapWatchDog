@@ -1,7 +1,7 @@
 # JmxHeapWatchDog
 ======================
 Jmxが有効なJavaVMへ定期的にアクセスし、ヒープ使用状況をCSV形式で保存します。
-Windowsサービスとして起動します。
+Windowsサービスとして起動します。Java6,7環境で動作確認。
 
 
 ## インストール
@@ -21,7 +21,7 @@ Windowsサービスとして起動します。
 
 ## 使い方
 ------
-#### 監視対象JavaVMでJmxを有効にする
+#### 1.監視対象JavaVMでJmxを有効にする
 監視対象となるJavaVMの起動時に、下記プロパティを指定します。
 ポート番号17999をJmxポートとして使用する場合の例。
 
@@ -31,7 +31,7 @@ Windowsサービスとして起動します。
 
 Apache Tomcaの場合、tomcatw.exeを起動して"Java"タブの"Java Options"欄に上記設定を追加後、再起動します。
 
-#### JmxHeapWatchingDog側の接続設定
+#### 2.JmxHeapWatchingDog側の接続設定
 conf/jvms.xmlファイルを編集して接続設定を行います。
 
 ````xml:
@@ -52,7 +52,7 @@ conf/jvms.xmlファイルを編集して接続設定を行います。
 * jvmInfoタグ port属性: 監視対象のJMXポート番号
 * jvmInfoタグ  csv_path属性: csvファイルの出力先フォルダ
 
-#### JmxHeapWatchingDogサービスを起動
+#### 3.JmxHeapWatchingDogサービスを起動
 JmxHeapWatchDogサービスを起動します。
 
 ### JmxHeapWatchingDogで出力するCSV内容の内容
