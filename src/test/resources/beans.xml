@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<MXBeans>
+  <memoryMxBeanInfo bean_type="Memory" name=""/>
+  <memoryPoolMxBeanInfo bean_type="MemoryPool" name="PS Survivor Space"/>
+  <memoryPoolMxBeanInfo bean_type="MemoryPool" name="PS Eden Space"/>
+  <memoryPoolMxBeanInfo bean_type="MemoryPool" name="PS Old Gen"/>
+  <memoryPoolMxBeanInfo bean_type="MemoryPool" name="PS Perm Gen"/>
+  <memoryPoolMxBeanInfo bean_type="MemoryPool" name="Code Cache"/>
+  <gcMXBeanInfo bean_type="GarbageCollector" name="PS MarkSweep"/>
+  <gcMXBeanInfo bean_type="GarbageCollector" name="PS Scavenge"/>
+</MXBeans>

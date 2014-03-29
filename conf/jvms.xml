@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<JavaVMs interval="30">
+  <jvmInfo name="javaVm1" host="localhost" port="17999"
+    csv_path="C:\Java\jmxlogs" ></jvmInfo>
+  <!-- 
+  <jvmInfo name="javaVm2" host="localhost" port="27999"
+    csv_path="C:\Java\jmxlogs2" ></jvmInfo>
+   -->
+</JavaVMs>
