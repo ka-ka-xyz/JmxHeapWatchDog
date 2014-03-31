@@ -1,14 +1,13 @@
 # JmxHeapWatchDog
 ======================
-Jmxが有効なJavaVMへ定期的にアクセスし、ヒープ使用状況をCSV形式で保存します。
+Jmxが有効なJavaVM(Hotspot)へ定期的にアクセスし、ヒープ使用状況をCSV形式で保存します。
 Windowsサービスとして起動します。Java6,7環境で動作確認。
 
 
 ## インストール
 ------
-
-64bit JavaVmがインストールされている環境では、installService_amd64.batを実行します。
-32bit JavaVMがインストールされている環境では、installService_x86.batを実行します。
+batフォルダを開、64bit JavaVmがインストールされている環境では、installService_amd64.batを実行します。
+32bit JavaVMがインストールされている環境では、bat/installService_x86.batを実行します。
 
 実行後、"JmxHeapWatchDog"サービスが作成されるので、Windowsの「コンピュータの管理」から
 サービスを起動してください。
@@ -21,7 +20,7 @@ Windowsサービスとして起動します。Java6,7環境で動作確認。
 
 ## 使い方
 ------
-#### 1.監視対象JavaVMでJmxを有効にする
+#### 1. 監視対象JavaVMでJmxを有効にする
 監視対象となるJavaVMの起動時に、下記プロパティを指定します。
 ポート番号17999をJmxポートとして使用する場合の例。
 
@@ -31,7 +30,7 @@ Windowsサービスとして起動します。Java6,7環境で動作確認。
 
 Apache Tomcaの場合、tomcatw.exeを起動して"Java"タブの"Java Options"欄に上記設定を追加後、再起動します。
 
-#### 2.JmxHeapWatchingDog側の接続設定
+#### 2. JmxHeapWatchDog側の接続設定
 conf/jvms.xmlファイルを編集して接続設定を行います。
 
 ````xml:
@@ -44,7 +43,7 @@ conf/jvms.xmlファイルを編集して接続設定を行います。
 </JavaVMs>
 ````
 
-* JavaVMsタグ interval属性: JmxHeapWatchingDogが監視対象へ接続する際の接続間隔時間（秒）を指定します
+* JavaVMsタグ interval属性: JmxHeapWatchDogが監視対象へ接続する際の接続間隔時間（秒）を指定します
 * JavaVMsタグ retry属性: 接続試行回数の上限値を指定します
 * jvmInfoタグ: 複数指定可能
 * jvmInfoタグ name属性: csvファイルのprefix名として使用されます
@@ -52,10 +51,10 @@ conf/jvms.xmlファイルを編集して接続設定を行います。
 * jvmInfoタグ port属性: 監視対象のJMXポート番号
 * jvmInfoタグ  csv_path属性: csvファイルの出力先フォルダ
 
-#### 3.JmxHeapWatchingDogサービスを起動
+#### 3.JmxHeapWatchDogサービスを起動
 JmxHeapWatchDogサービスを起動します。
 
-### JmxHeapWatchingDogで出力するCSV内容の内容
+### JmxHeapWatchDogで出力するCSV内容の内容
 Jmx経由で取得したメモリ使用状況は下記ファイルに出力されます。
 
 `<jcmInfoタグのname属性>_yyyy-MM-dd.csv`
