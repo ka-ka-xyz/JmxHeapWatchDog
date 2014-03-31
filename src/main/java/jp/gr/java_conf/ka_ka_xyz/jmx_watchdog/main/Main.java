@@ -7,7 +7,7 @@ import jp.gr.java_conf.ka_ka_xyz.jmx_watchdog.conf.jvm.manager.JvmConfigManager;
 import jp.gr.java_conf.ka_ka_xyz.jmx_watchdog.task.JmxRetrieveTask;
 
 /**
- * リモートJVMからMxBeanを取得するサンプル
+ * commons-daemonからキックされることを想定したメインクラスです。
  * */
 public class Main {
 	private static final String START = "start";
@@ -15,15 +15,20 @@ public class Main {
 	private static JmxRetrieveTask task =null;
 	private static Timer timer = null;
 	private static Logger logger = Logger.getLogger(Main.class.getName());
+	
+	/**
+	 * 第一引数が"start"の場合には監視スレッドを起動します。
+	 * "stop"の場合には監視スレッドを停止します。
+	 * */
 	public static void main(String[] args) throws Exception {
 
 		if(args == null || args.length < 1){
-			//logger.info("no argument. do nothing");
+			logger.info("no argument. do nothing");
 			return;
 		}
 		
 		if(START.equalsIgnoreCase(args[0])){
-			logger.info("tring to start watchdog.");
+			logger.info("trying to start watchdog.");
 			timer = new Timer();
 			try{
 				int interval = JvmConfigManager.getConfigManager().getInterval();
@@ -35,7 +40,7 @@ public class Main {
 			logger.info("watchdog started successfully.");
 
 		} else if(STOP.equalsIgnoreCase(args[0])){
-			logger.info("tring to stop watchdog.");
+			logger.info("trying to stop watchdog.");
 			task.cancel();
 			timer.purge();
 			logger.info("watchdog stopped successfully.");

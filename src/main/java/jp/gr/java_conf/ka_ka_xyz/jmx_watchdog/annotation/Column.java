@@ -23,7 +23,7 @@ import java.lang.annotation.ElementType;
 
 
 /**
- * DTOをCSVとして表現できる文字型へ変換するために使用するannotationです。
+ * DTOをCSVとして表現できる文字型へ変換するために内部的に使用するannotationです。
  * 
  * */
 @Retention(RetentionPolicy.RUNTIME)

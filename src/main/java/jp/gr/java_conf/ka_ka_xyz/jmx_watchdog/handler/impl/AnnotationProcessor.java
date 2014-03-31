@@ -9,6 +9,8 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import jp.gr.java_conf.ka_ka_xyz.jmx_watchdog.annotation.Column;
 /**DTOのアノテーション情報を元にCSVの値とヘッダ文字列を取得するためのクラス*/
@@ -17,6 +19,7 @@ class AnnotationProcessor {
 	private List<Field> fields = new ArrayList<Field>();
 	private List<AnnotatedColumn> annotatedFields = new ArrayList<AnnotatedColumn>();
 	private CsvDataDTO dto;
+	private static Logger logger = Logger.getLogger(AnnotationProcessor.class.getName());
 
 	AnnotationProcessor(CsvDataDTO dto) {
 		if(dto == null){throw new IllegalArgumentException("Argument is null");}
@@ -72,17 +75,17 @@ class AnnotationProcessor {
 			}
 			
 		} catch (IntrospectionException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			logger.log(Level.SEVERE,"failed to process annotation.", e);
+			throw new AnnotationHandlingException(e);
 		} catch (IllegalArgumentException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			logger.log(Level.SEVERE,"failed to process annotation.", e);
+			throw new AnnotationHandlingException(e);
 		} catch (IllegalAccessException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			logger.log(Level.SEVERE,"failed to process annotation.", e);
+			throw new AnnotationHandlingException(e);
 		} catch (InvocationTargetException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			logger.log(Level.SEVERE,"failed to process annotation.", e);
+			throw new AnnotationHandlingException(e);
 		}
 		int index = rtn.lastIndexOf(",");
 		if(index > 0){

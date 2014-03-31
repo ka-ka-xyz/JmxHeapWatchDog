@@ -6,7 +6,6 @@ import java.lang.management.MemoryPoolMXBean;
 import java.lang.management.MemoryUsage;
 import java.util.Date;
 
-import jp.gr.java_conf.ka_ka_xyz.jmx_watchdog.annotation.Column;
 import jp.gr.java_conf.ka_ka_xyz.jmx_watchdog.handler.MXBeanHandler;
 
 public class MXBeanHandlerImpl implements MXBeanHandler {
